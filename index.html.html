@@ -8,13 +8,19 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: rgb(193, 255, 239);
+            background-color: rgba(248, 172, 122, 0.863);
             font-family: Arial, sans-serif;
+        }
+
+        #tree-container {
+            height: 100vh;
+            width: 200%;
+            overflow: auto;
         }
 
         .link {
             fill: none;
-            stroke: #666;
+            stroke: rgba(102, 102, 102, 0.137);
             stroke-width: 2px;
         }
 
@@ -23,9 +29,9 @@
         }
 
         .node circle {
-            fill: #ddd;
-            stroke: #999;
-            stroke-width: 2px;
+            fill: rgba(221, 221, 221, 0.144);
+            stroke: rgba(153, 153, 153, 0.623);
+            stroke-width: 36px;
         }
 
         .node text {
@@ -48,99 +54,180 @@
     </style>
 </head>
 <body>
+    <div id="tree-container"></div>
+    
+      
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script>
         var treeData = {
-    name: "Idea Principal",
+    name: "Tejido Conjuntivo",
     children: [
         {
-            name: "Sub-idea 1",
+            name: "Funciones",
             children: [
-                { 
-                    name: "Sub-idea 1.1",
-                    children: [
-                        { name: "Sub-idea 1.1.1" },
-                        { name: "Sub-idea 1.1.2" }
-                    ]
-                },
-                { 
-                    name: "Sub-idea 1.2",
-                    children: [
-                        { name: "Sub-idea 1.2.1" },
-                        { name: "Sub-idea 1.2.2" }
-                    ]
-                },
-                { 
-                    name: "Sub-idea 1.3",
-                    children: [
-                        { name: "Sub-idea 1.3.1" },
-                        { name: "Sub-idea 1.3.2" }
-                    ]
-                }
+                { name: "Mecanica"},
+                { name: "Nutricia (Vitabilidad)"},
+                {name:"Inmunologica"},
+                {name:"Almacenamiento"}
             ]
         },
         { 
-            name: "Sub-idea 2",
+            name: "Componentes",
             children: [
                 { 
-                    name: "Sub-idea 2.1",
-                    children: [
-                        { name: "Sub-idea 2.1.1" },
-                        { name: "Sub-idea 2.1.2" }
+                    name: "Celulas ",
+                    children :[
+                       {
+                        name:"Fijas o residentes",
+                        children:[
+                            {
+                                name:"Fibroblastos",
+                                children:[
+                                    {name:"Miofibroblastos"},
+                                    {name:"Macrofagos"}
+                                ]
+                            },
+                            {
+                                name:"Mastocitos",
+                                children:[
+                                    {name:"Adipocitos"},
+                                    {name:"Pericitos"}
+                                ]
+                            },
+                        ]
+                    },
+                    {
+                        name:"Moviles",
+                        children:[
+                            {
+                              name:"Linfocitos",
+                              children:[
+                                {name:"Plasmocitos"},
+                                {name:"T.B.N.K"},
+                                {name:"Monocitos"}
+                              ]
+                        },
+                        {
+                            name:"Leucocitos",
+                            children:[
+                                {name:"Neutrofilos"},
+                                {name:"Basofilos"},
+                                {name:"Eosinofilos"}
+                            ]
+                    },
+                        ]
+                    }
                     ]
                 },
-                { 
-                    name: "Sub-idea 2.2",
-                    children: [
-                        { name: "Sub-idea 2.2.1" },
-                        { name: "Sub-idea 2.2.2" }
-                    ]
-                },
-                { 
-                    name: "Sub-idea 2.3",
-                    children: [
-                        { name: "Sub-idea 2.3.1" },
-                        { name: "Sub-idea 2.3.2" }
-                    ]
-                }
             ]
         },
         { 
-            name: "Sub-idea 3",
+            name: "Clasificacion",
             children: [
                 { 
-                    name: "Sub-idea 3.1",
+                    name: "Tejido embrionario",
                     children: [
-                        { name: "Sub-idea 3.1.1" },
-                        { name: "Sub-idea 3.1.2" }
+                        { 
+                            name: "Tejido Mesenquimatico",
+                            children:[
+                                {
+                                  name:"Da lugar",
+                                  children:[
+                                       {name:"Huesos"},
+                                       {name:"Ligamentos"},
+                                       {name:"Cartilago"},
+                                       {name:"Excepto los huesos del craneo"}
+                                  ]
+                                },
+                            ]
+                         },
+                        { 
+                          name: "Tejido Mucuoso",
+                          children:[
+                            {name:"Cordon Umbilical"},
+                            {name:"Gelatina de Warthon"}
+                          ]
+                         },
                     ]
                 },
-                { 
-                    name: "Sub-idea 3.2",
-                    children: [
-                        { name: "Sub-idea 3.2.1" },
-                        { name: "Sub-idea 3.2.2" }
-                    ]
-                },
-                { 
-                    name: "Sub-idea 3.3",
-                    children: [
-                        { name: "Sub-idea 3.3.1" },
-                        { name: "Sub-idea 3.3.2" }
+                {
+                    name:"Tejido Adulto",
+                    children:[
+                        {
+                            name:"No especializado",
+                            children:[
+                                {name:"Tejido conjuntivo laxo"},
+                                {
+                                  name:"Tejido conjuntivo denso",
+                                  children:[
+                                    {name:"Regular"},
+                                    {name:"Irregular"}
+                                  ]
+                                },
+
+                            ]
+                        }
                     ]
                 }
+   
+            ]
+        },
+        {
+            name:"Caracteristicas",
+            children:[
+                 {name:"Abundante MEC"},
+                 {name:"Vascularizado"},
+                 {name:"Nutre al resto de tejidos"}
+            ]
+        },
+        {
+            name:"Matriz Extracelular",
+            children:[
+                {
+                    name:"Inorganica",
+                    children:[
+                        {name:"Agua"},
+                        {name:"Electrolitros"}
+                    ]
+            },
+            {
+                name:"Organica",
+                children:[
+                    {
+                        name:"Glucosaminoglucanos",
+                        children:[
+                            {name:"Sulfatados"},
+                            {name:"No sulfatados"}
+                        ]
+                    },
+                    {
+                        name:"Glucoproteinas",
+                        children:[
+                            {name:"Agrecanos"},
+                            {name:"Versicano"},
+                            {name:"Decorina"},
+                            {name:"Sindecano"}
+                        ]
+                    },
+                    {
+                        name:"Proteoglucanos",
+                        children:[
+                             {name:"Laminina"},
+                             {name:"Fibronectina"}
+                        ]
+                    },
+                ]
+            }
             ]
         }
     ]
 };
 
-
-
-
-        var svg = d3.select("body").append("svg")
-            .attr("width", window.innerWidth)
-            .attr("height", window.innerHeight),
-            margin = {top: 20, right: 90, bottom: 30, left: 90},
+        
+        var svg = d3.select("#tree-container").append("svg")
+            .attr("width", window.innerWidth* 2)
+            .attr("height", window.innerHeight * 2), // Ajusta este valor según tus necesidades
+            margin = {top: 20, right: 130, bottom: 30, left: 130},
             width = svg.attr("width") - margin.left - margin.right,
             height = svg.attr("height") - margin.top - margin.bottom;
 
@@ -148,7 +235,7 @@
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         var tree = d3.tree()
-            .size([height, width]);
+            .size([height, width ]);
 
         var root = d3.hierarchy(treeData, function(d) { return d.children; });
         root.x0 = height / 2;
@@ -163,7 +250,8 @@
             var nodes = treeData.descendants(),
                 links = treeData.descendants().slice(1);
 
-            nodes.forEach(function(d){ d.y = d.depth * 180});
+            nodes.forEach(function(d){ d.y = d.depth * 400}); // antes era 180
+
 
             var node = g.selectAll('g.node')
                 .data(nodes, function(d) { return d.id || (d.id = ++i); });
@@ -267,4 +355,3 @@
     </script>
 </body>
 </html>
-
